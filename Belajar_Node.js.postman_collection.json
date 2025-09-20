@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "893f31cf-3765-4ddd-b876-97605f76b690",
+		"name": "Belajar_Node.js",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47980357",
+		"_collection_link": "https://vinafaiza25-9915353.postman.co/workspace/vina-faiza's-Workspace~c927652c-31f8-4bf7-8fb8-2999e177d076/collection/47980357-893f31cf-3765-4ddd-b876-97605f76b690?action=share&source=collection_link&creator=47980357"
+	},
+	"item": [
+		{
+			"name": "movies",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "post movies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 61,\r\n        \"title\": \"Spirited Away\",\r\n        \"director\": \"Hayao Miyazaki\",\r\n        \"year\": 2017\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3300/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put movies",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 61,\r\n        \"title\": \"My Neighbor Totoro\",\r\n        \"director\": \"Hayao Miyazaki\",\r\n        \"year\": 2020\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3300/movies/61",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"movies",
+						"61"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "del movies",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3300/movies/60",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"movies",
+						"60"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "directors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3300/directors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"directors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post directors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 19,\r\n        \"name\": \"Lin Yi\",\r\n        \"birthYear\": 2000\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3300/directors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"directors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put directors",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 12,\r\n        \"name\": \"Luo Yunxi\",\r\n        \"birthYear\": 1990\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3300/directors/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"directors",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "del directors",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3300/directors/18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"directors",
+						"18"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
