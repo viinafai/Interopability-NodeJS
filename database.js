@@ -1,43 +1,51 @@
-require(`dotenv`).config();
+require('dotenv').config();
 const sqlite3 = require('sqlite3').verbose();
-const DBSOURCE_1 = process.env.DB_SOURCE_1 || "db.sqlite";
-const DBSOUCRE_2 = process.env.DB_SOURCE_2
+// const DB_SOURCE_1 = process.env.DB_SOURCE_1 || "db.sqlite"; // Added a fallback
+const DB_SOURCE_2 = process.env.DB_SOURCE_2 || "db_directors.sqlite";
 
+// const dbMovies = new sqlite3.Database(DB_SOURCE_1, (err) => {
+//   if (err) {
+//     console.error(err.message);
+//     throw err;
+//   } else {
+//     console.log(`berhasil terhubung ke database:${DB_SOURCE_1}`);
+//     dbMovies.run(
+//       `CREATE TABLE IF NOT EXISTS movies (
+//         id INTEGER PRIMARY KEY AUTOINCREMENT,
+//         title TEXT NOT NULL,
+//         director TEXT NOT NULL,
+//         year INTEGER NOT NULL
+//       )`,
+//       (err) => {
+//         if (!err) {
+//           console.log("Tabel 'movies' berhasil dibuat. Memasukkan data awal...");
+//           const insert = "INSERT INTO movies (title, director, year) VALUES (?,?,?)";
+//           dbMovies.run(insert, ["The Lord of the Rings", "Peter Jackson", 2001]);
+//           dbMovies.run(insert, ["The Avengers", "Joss Whedon", 2012]);
+//         } else {
+//           console.log("Tabel 'movies' sudah ada.");
+//         }
+//       });
+//       dbMovies.run(`create table if not exists users (
+//       id integer primary key autoincrement,
+//       username  text not null unique,
+//       password text not null
+//       )`, (err) => {
+//         if (err) {
+//           console.error("Gagal membuat tabel users:", err.message);
+//       }
+//    });
+//   }
+// });
 
-const dbMovies = new sqlite3.Database(DBSOURCE_1, (err) => {
+// Membuat koneksi kedua ke database untuk tabel 'directors'
+const dbDirectors = new sqlite3.Database(DB_SOURCE_2, (err) => {
     if (err) {
-        console.error(err.message);
-        throw err;
-    } else {
-        console.log('Connected to the SQLite database.');
-        dbMovies.run(`CREATE TABLE IF NOT EXISTS movies (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL,
-    director TEXT NOT NULL, 
-    year INTEGER NOT NULL
-);`, (err) => {
-    if (!err) {
-        console.log("Table already created. Seeding initial data");
-        const insert = 'INSERT INTO movies (title, director, year) VALUES (?,?,?)';
-        dbMovies.run(insert, ["Moana", "Don Hall", 2016]);
-        dbMovies.run(insert, ["piderman", "Jon Watts", 2018]);
-        dbMovies.run(insert, ["Inside Out", "Pete Docter", 2015]);
-    } else {
-        console.log("Table 'movies' already exists.");
-    }
-});
-
-  }
-
-    }
-);
-
-const dbDirectors = new sqlite3.Database(DBSOUCRE_2, (err) => {
-    if (err) {
-        console.error("Error:", err.message);
+        console.error("Error: ", err.message);
         throw err;
     }
-    console.log(`Berhasil terhubung ke database: ${DBSOUCRE_2}`);
+
+    console.log(`Berhasil terhubung ke database: ${DB_SOURCE_2}`);
     dbDirectors.run(
         `CREATE TABLE IF NOT EXISTS directors (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -46,18 +54,28 @@ const dbDirectors = new sqlite3.Database(DBSOUCRE_2, (err) => {
         )`,
         (err) => {
             if (!err) {
-                console.log("Tabel 'directors' berhasil dibuat. Masukan data awal....");
-                const insert = 'INSERT INTO directors (name, birthYear) VALUES (?,?)';
-                dbDirectors.run(insert, ["Don Hall", 1980]);
-                dbDirectors.run(insert, ["Jon Watts", 1985]);
-                dbDirectors.run(insert, ["Pete Docter", 1990]);
+                console.log("Tabel 'directors' berhasil dibuat. Memasukkan data awal...");
+                const insert = "INSERT INTO directors (name, birthYear) VALUES (?,?)";
+                dbDirectors.run(insert, ["Faizatus Sofia", 2006]);
+                dbDirectors.run(insert, ["Cheryl Aurelya", 2005]);
+                dbDirectors.run(insert, ["Adelia Fioren", 2004]);
             } else {
-                console.log("Tabel 'directors' sudah ada");
+                console.log("Tabel 'directors' sudah ada.");
             }
         }
     );
+     dbDirectors.run(`create table if not exists users (
+     id integer primary key autoincrement,
+       username  text not null unique,
+       password text not null
+       )`, (err) => {
+         if (err) {
+           console.error("Gagal membuat tabel users:", err.message);
+       }
+    });
 });
+
 module.exports = {
-    dbMovies,
+    // dbMovies,
     dbDirectors
-};
+};``
